@@ -86,8 +86,9 @@ Age: float | None = None                     # Edad: mayores tienen mayor riesgo
 Gender: float | None = None                  # Género: algunas diferencias inmunológicas pueden influir.
 Unit1: float | None = None                   # Identificador UCI (MICU): tipo de unidad puede reflejar gravedad.
 Unit2: float | None = None                   # Identificador UCI (SICU): quirúrgica o médica.
-HospAdmTime: float | None = None             # Tiempo desde admisión hospitalaria: útil para contexto clínico.
-ICULOS: float | None = None                  # Horas en UCI: refleja evolución del paciente.
+HospAdmTime: float | None = None 
+ICULOS: float | None = None             # Tiempo desde admisión hospitalaria: útil para contexto clínico.
+# ICULOS: float | promedios                 # Horas en UCI: refleja evolución del paciente.
 
 #40
 # Endpoint de analisis
@@ -145,17 +146,16 @@ def analizar(datos: SepsisInput, promedios, modelo):
     # CARGAR COLUMNAS DEL DATSET A MANO
     #PARA QUE ESTO FUNCIONE EL FRONT TENDRIA QUE PASAR TODOS LOS DATOS QUE TIENNE Y NO LOS QUE NO, NO VARIABLE CON NONE
     promedios = df.mean()
-        n = len(entrada)
+    valores_recibidos = [v for v in entrada if v is not None]
+    n = len(entrada)
     posibles = [7, 15, 25, 40]
     if n not in posibles:
         for limite in posibles:
             if n < 7:
-                raise new Error()
+                raise ValueError("Variables menos de 7")
                 #Chequear
             elif n <= limite:
-                limite - n = nada
-
-
+              
                 n = limite
                 break
            
