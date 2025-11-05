@@ -51,7 +51,7 @@ DBP: float | None = None                     # Presión diastólica: baja en vas
 Resp: float | None = None                    # Frecuencia respiratoria: aumenta por acidosis metabólica.
 EtCO2: float | None = None                   # CO₂ espirado: niveles bajos pueden indicar hipoperfusión.
 
-#  Laboratory values (9–34)
+#  #
 BaseExcess: float | None = None              # Exceso de base: evalúa equilibrio ácido-base.
 HCO3: float | None = None                    # Bicarbonato: bajo en acidosis metabólica por sepsis.
 FiO2: float | None = None                    # Fracción de oxígeno inspirado: indica necesidad de soporte respiratorio.
@@ -59,6 +59,7 @@ pH: float | None = None                      # Nivel de pH sanguíneo: acidosis 
 PaCO2: float | None = None                   # Presión parcial de CO₂: refleja respiración y metabolismo.
 SaO2: float | None = None                    # Saturación arterial de oxígeno: baja en hipoxemia séptica.
 AST: float | None = None                     # Enzima hepática: aumenta si hay daño hepático por sepsis.
+#15
 BUN: float | None = None                     # Urea: alto indica fallo renal por hipoperfusión.
 Alkalinephos: float | None = None            # Fosfatasa alcalina: se eleva por daño hepático o biliar.
 Calcium: float | None = None                 # Calcio: puede bajar en sepsis por inflamación sistémica.
@@ -69,6 +70,7 @@ Glucose: float | None = None                 # Glucosa: puede aumentar por estr�
 Lactate: float | None = None                 # Lactato: elevado indica hipoxia tisular, marcador clave de sepsis.
 Magnesium: float | None = None               # Magnesio: bajo puede agravar arritmias en sepsis.
 Phosphate: float | None = None               # Fosfato: alterado en disfunción metabólica.
+#25
 Potassium: float | None = None               # Potasio: cambios reflejan alteraciones renales o acidosis.
 Bilirubin_total: float | None = None         # Bilirrubina total: indica daño hepático o colestasis.
 TroponinI: float | None = None               # Troponina I: alta indica daño cardíaco por shock séptico.
@@ -78,8 +80,7 @@ PTT: float | None = None                     # Tiempo de tromboplastina parcial:
 WBC: float | None = None                     # Glóbulos blancos: elevados o bajos, ambos posibles en sepsis.
 Fibrinogen: float | None = None              # Fibrinógeno: puede bajar por coagulación intravascular diseminada.
 Platelets: float | None = None               # Plaquetas: bajas en sepsis severa por consumo o destrucción.
-
-
+#34
 #  Demographics (35–40)
 Age: float | None = None                     # Edad: mayores tienen mayor riesgo y peor pronóstico.
 Gender: float | None = None                  # Género: algunas diferencias inmunológicas pueden influir.
@@ -88,6 +89,7 @@ Unit2: float | None = None                   # Identificador UCI (SICU): quirúr
 HospAdmTime: float | None = None             # Tiempo desde admisión hospitalaria: útil para contexto clínico.
 ICULOS: float | None = None                  # Horas en UCI: refleja evolución del paciente.
 
+#40
 # Endpoint de analisis
 @app.post("/analizar")
 
@@ -144,20 +146,23 @@ def analizar(datos: SepsisInput, promedios, modelo):
     #PARA QUE ESTO FUNCIONE EL FRONT TENDRIA QUE PASAR TODOS LOS DATOS QUE TIENNE Y NO LOS QUE NO, NO VARIABLE CON NONE
     promedios = df.mean()
         n = len(entrada)
-    posibles = [7, 15, 25, 42]
+    posibles = [7, 15, 25, 40]
     if n not in posibles:
         for limite in posibles:
             if n < 7:
                 raise new Error()
                 #Chequear
             elif n <= limite:
+                limite - n = nada
+
+
                 n = limite
                 break
            
 
     modelo = modelos[n]
 
-
+#lista de los valores que tengo en el bloque, lista de que valores hay por bloque y 
     columnas = df.columns[:n]
     valores_completos = []
     for i, col in enumerate(columnas):
