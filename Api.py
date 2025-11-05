@@ -140,22 +140,25 @@ def analizar(datos: SepsisInput, promedios, modelo):
 
     print("Los datos entraron")
 
-
     # CARGAR COLUMNAS DEL DATSET A MANO
+    #PARA QUE ESTO FUNCIONE EL FRONT TENDRIA QUE PASAR TODOS LOS DATOS QUE TIENNE Y NO LOS QUE NO, NO VARIABLE CON NONE
     promedios = df.mean()
         n = len(entrada)
     posibles = [7, 15, 25, 42]
     if n not in posibles:
         for limite in posibles:
-            if n < limite:
+            if n < 7:
+                raise new Error()
+                #Chequear
+            elif n <= limite:
                 n = limite
                 break
-        else:
-            n = 42
+           
+
     modelo = modelos[n]
 
 
-     columnas = df.columns[:n]
+    columnas = df.columns[:n]
     valores_completos = []
     for i, col in enumerate(columnas):
         if i < len(entrada) and not np.isnan(entrada[i]):
