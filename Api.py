@@ -51,9 +51,6 @@ DBP: float | None = None                     # Presión diastólica: baja en vas
 Resp: float | None = None                    # Frecuencia respiratoria: aumenta por acidosis metabólica.
 EtCO2: float | None = None                   # CO₂ espirado: niveles bajos pueden indicar hipoperfusión.
 
-
-
-
 #  Laboratory values (9–34)
 BaseExcess: float | None = None              # Exceso de base: evalúa equilibrio ácido-base.
 HCO3: float | None = None                    # Bicarbonato: bajo en acidosis metabólica por sepsis.
@@ -91,12 +88,7 @@ Unit2: float | None = None                   # Identificador UCI (SICU): quirúr
 HospAdmTime: float | None = None             # Tiempo desde admisión hospitalaria: útil para contexto clínico.
 ICULOS: float | None = None                  # Horas en UCI: refleja evolución del paciente.
 
-
-
-
-
-
-# Endpoint de predicción
+# Endpoint de analisis
 @app.post("/analizar")
 
 
