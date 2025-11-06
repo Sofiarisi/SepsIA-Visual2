@@ -149,15 +149,29 @@ def analizar(datos: SepsisInput, promedios, modelo):
     valores_recibidos = [v for v in entrada if v is not None]
     n = len(entrada)
     posibles = [7, 15, 25, 40]
-    if n not in posibles:
-        for limite in posibles:
-            if n < 7:
-                raise ValueError("Variables menos de 7")
-                #Chequear
-            elif n <= limite:
+    # if n not in posibles:
+    #     for limite in posibles:
+    #         if n < 7:
+    #             raise ValueError("Variables menos de 7")
+    #             #Chequear
+    #         elif n <= limite:
               
-                n = limite
-                break
+    #             n = limite
+    #             break
+    if n < 7:
+        raise ValueError("Variables menos de 7")
+    elif n < 15:
+        n = 15
+    elif n < 25:
+        n = 25
+    elif n < 40:
+        n=40
+    else
+    raise ValueError("Variables menos de 7")
+
+
+   
+
            
 
     modelo = modelos[n]
