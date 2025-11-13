@@ -10,21 +10,23 @@ import xgboost as xgb
 
 
 modelo = xgb.XGBClassifier()
-modelos = {
-    7: xgb.XGBClassifier(),
-    15: xgb.XGBClassifier(),
-    25: xgb.XGBClassifier(),
-    40: xgb.XGBClassifier()
-}
+modelo.load_model("model_completo.json")  # or .bin, .txt, etc.
+print("Modelo cargado correctamente")
+# modelos = {
+#     7: xgb.XGBClassifier(),
+#     15: xgb.XGBClassifier(),
+#     25: xgb.XGBClassifier(),
+#     40: xgb.XGBClassifier()
+# }
 
 
-modelos[7].load_model("model_7.json")
-modelos[15].load_model("model_15.json")
-modelos[25].load_model("model_25.json")
-modelos[40].load_model("model_40.json")
-#CARGAR TODOS LOS MODELOS
-df = pd.read_csv("dataset.csv")  # ⚠️ Asegurate de tener el archivo
-promedios = df.mean()
+# modelos[7].load_model("model_7.json")
+# modelos[15].load_model("model_15.json")
+# modelos[25].load_model("model_25.json")
+# modelos[40].load_model("model_40.json")
+# #CARGAR TODOS LOS MODELOS
+# df = pd.read_csv("dataset.csv")  # ⚠️ Asegurate de tener el archivo
+# promedios = df.mean()
 # Crear app
 app = FastAPI()
 
@@ -143,48 +145,48 @@ def analizar(datos: SepsisInput, promedios, modelo):
 
     print("Los datos entraron")
 
-    # CARGAR COLUMNAS DEL DATSET A MANO
-    #PARA QUE ESTO FUNCIONE EL FRONT TENDRIA QUE PASAR TODOS LOS DATOS QUE TIENNE Y NO LOS QUE NO, NO VARIABLE CON NONE
-    promedios = df.mean()
-    valores_recibidos = [v for v in entrada if v is not None]
-    n = len(entrada)
-    posibles = [7, 15, 25, 40]
-    # if n not in posibles:
-    #     for limite in posibles:
-    #         if n < 7:
-    #             raise ValueError("Variables menos de 7")
-    #             #Chequear
-    #         elif n <= limite:
+#     # CARGAR COLUMNAS DEL DATSET A MANO
+#     #PARA QUE ESTO FUNCIONE EL FRONT TENDRIA QUE PASAR TODOS LOS DATOS QUE TIENNE Y NO LOS QUE NO, NO VARIABLE CON NONE
+#     promedios = df.mean()
+#     valores_recibidos = [v for v in entrada if v is not None]
+#     n = len(entrada)
+#     posibles = [7, 15, 25, 40]
+#     # if n not in posibles:
+#     #     for limite in posibles:
+#     #         if n < 7:
+#     #             raise ValueError("Variables menos de 7")
+#     #             #Chequear
+#     #         elif n <= limite:
               
-    #             n = limite
-    #             break
-    if n < 7:
-        raise ValueError("Variables menos de 7")
-    elif n < 15:
-        n = 15
-    elif n < 25:
-        n = 25
-    elif n < 40:
-        n=40
-    else
-    raise ValueError("Variables menos de 7")
+#     #             n = limite
+#     #             break
+#     if n < 7:
+#         raise ValueError("Variables menos de 7")
+#     elif n < 15:
+#         n = 15
+#     elif n < 25:
+#         n = 25
+#     elif n < 40:
+#         n=40
+#     else
+#     raise ValueError("Variables menos de 7")
 
 
    
 
            
 
-    modelo = modelos[n]
+#     modelo = modelos[n]
 
-#lista de los valores que tengo en el bloque, lista de que valores hay por bloque y 
-    columnas = df.columns[:n]
-    valores_completos = []
-    for i, col in enumerate(columnas):
-        if i < len(entrada) and not np.isnan(entrada[i]):
-            val = entrada[i]
-        else:
-            val = promedios[col]
-        valores_completos.append(val)
+# #lista de los valores que tengo en el bloque, lista de que valores hay por bloque y 
+#     columnas = df.columns[:n]
+#     valores_completos = []
+#     for i, col in enumerate(columnas):
+#         if i < len(entrada) and not np.isnan(entrada[i]):
+#             val = entrada[i]
+#         else:
+#             val = promedios[col]
+#         valores_completos.append(val)
    
 
 
