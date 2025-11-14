@@ -43,54 +43,54 @@ app = FastAPI()
 
 
 class SepsisInput(BaseModel):
-#  Vital signs (1–8)
-HR: float | None = None                      # Frecuencia cardíaca: aumenta con fiebre o shock séptico.
-O2Sat: float | None = None                   # Saturación de oxígeno: baja indica hipoxia, común en sepsis grave.
-Temp: float | None = None                    # Temperatura corporal: fiebre o hipotermia son signos clásicos.
-SBP: float | None = None                     # Presión sistólica: suele bajar en shock séptico.
-MAP: float | None = None                     # Presión arterial media: refleja la perfusión de órganos.
-DBP: float | None = None                     # Presión diastólica: baja en vasodilatación séptica.
-Resp: float | None = None                    # Frecuencia respiratoria: aumenta por acidosis metabólica.
-EtCO2: float | None = None                   # CO₂ espirado: niveles bajos pueden indicar hipoperfusión.
+    #  Vital signs (1–8)
+    HR: float | None = None                      # Frecuencia cardíaca: aumenta con fiebre o shock séptico.
+    O2Sat: float | None = None                   # Saturación de oxígeno: baja indica hipoxia, común en sepsis grave.
+    Temp: float | None = None                    # Temperatura corporal: fiebre o hipotermia son signos clásicos.
+    SBP: float | None = None                     # Presión sistólica: suele bajar en shock séptico.
+    MAP: float | None = None                     # Presión arterial media: refleja la perfusión de órganos.
+    DBP: float | None = None                     # Presión diastólica: baja en vasodilatación séptica.
+    Resp: float | None = None                    # Frecuencia respiratoria: aumenta por acidosis metabólica.
+    EtCO2: float | None = None                   # CO₂ espirado: niveles bajos pueden indicar hipoperfusión.
 
-#  #
-BaseExcess: float | None = None              # Exceso de base: evalúa equilibrio ácido-base.
-HCO3: float | None = None                    # Bicarbonato: bajo en acidosis metabólica por sepsis.
-FiO2: float | None = None                    # Fracción de oxígeno inspirado: indica necesidad de soporte respiratorio.
-pH: float | None = None                      # Nivel de pH sanguíneo: acidosis sugiere sepsis grave.
-PaCO2: float | None = None                   # Presión parcial de CO₂: refleja respiración y metabolismo.
-SaO2: float | None = None                    # Saturación arterial de oxígeno: baja en hipoxemia séptica.
-AST: float | None = None                     # Enzima hepática: aumenta si hay daño hepático por sepsis.
-#15
-BUN: float | None = None                     # Urea: alto indica fallo renal por hipoperfusión.
-Alkalinephos: float | None = None            # Fosfatasa alcalina: se eleva por daño hepático o biliar.
-Calcium: float | None = None                 # Calcio: puede bajar en sepsis por inflamación sistémica.
-Chloride: float | None = None                # Cloro: desequilibrios reflejan alteraciones metabólicas.
-Creatinine: float | None = None              # Creatinina: alta indica daño renal, común en sepsis.
-Bilirubin_direct: float | None = None        # Bilirrubina directa: aumento por disfunción hepática.
-Glucose: float | None = None                 # Glucosa: puede aumentar por estrés o bajar en sepsis avanzada.
-Lactate: float | None = None                 # Lactato: elevado indica hipoxia tisular, marcador clave de sepsis.
-Magnesium: float | None = None               # Magnesio: bajo puede agravar arritmias en sepsis.
-Phosphate: float | None = None               # Fosfato: alterado en disfunción metabólica.
-#25
-Potassium: float | None = None               # Potasio: cambios reflejan alteraciones renales o acidosis.
-Bilirubin_total: float | None = None         # Bilirrubina total: indica daño hepático o colestasis.
-TroponinI: float | None = None               # Troponina I: alta indica daño cardíaco por shock séptico.
-Hct: float | None = None                     # Hematocrito: baja por dilución o hemorragia.
-Hgb: float | None = None                     # Hemoglobina: mide capacidad de transporte de oxígeno.
-PTT: float | None = None                     # Tiempo de tromboplastina parcial: alterado en coagulopatía séptica.
-WBC: float | None = None                     # Glóbulos blancos: elevados o bajos, ambos posibles en sepsis.
-Fibrinogen: float | None = None              # Fibrinógeno: puede bajar por coagulación intravascular diseminada.
-Platelets: float | None = None               # Plaquetas: bajas en sepsis severa por consumo o destrucción.
-#34
-#  Demographics (35–40)
-Age: float | None = None                     # Edad: mayores tienen mayor riesgo y peor pronóstico.
-Gender: float | None = None                  # Género: algunas diferencias inmunológicas pueden influir.
-Unit1: float | None = None                   # Identificador UCI (MICU): tipo de unidad puede reflejar gravedad.
-Unit2: float | None = None                   # Identificador UCI (SICU): quirúrgica o médica.
-HospAdmTime: float | None = None 
-ICULOS: float | None = None             # Tiempo desde admisión hospitalaria: útil para contexto clínico.
-# ICULOS: float | promedios                 # Horas en UCI: refleja evolución del paciente.
+    #  #
+    BaseExcess: float | None = None              # Exceso de base: evalúa equilibrio ácido-base.
+    HCO3: float | None = None                    # Bicarbonato: bajo en acidosis metabólica por sepsis.
+    FiO2: float | None = None                    # Fracción de oxígeno inspirado: indica necesidad de soporte respiratorio.
+    pH: float | None = None                      # Nivel de pH sanguíneo: acidosis sugiere sepsis grave.
+    PaCO2: float | None = None                   # Presión parcial de CO₂: refleja respiración y metabolismo.
+    SaO2: float | None = None                    # Saturación arterial de oxígeno: baja en hipoxemia séptica.
+    AST: float | None = None                     # Enzima hepática: aumenta si hay daño hepático por sepsis.
+    #15
+    BUN: float | None = None                     # Urea: alto indica fallo renal por hipoperfusión.
+    Alkalinephos: float | None = None            # Fosfatasa alcalina: se eleva por daño hepático o biliar.
+    Calcium: float | None = None                 # Calcio: puede bajar en sepsis por inflamación sistémica.
+    Chloride: float | None = None                # Cloro: desequilibrios reflejan alteraciones metabólicas.
+    Creatinine: float | None = None              # Creatinina: alta indica daño renal, común en sepsis.
+    Bilirubin_direct: float | None = None        # Bilirrubina directa: aumento por disfunción hepática.
+    Glucose: float | None = None                 # Glucosa: puede aumentar por estrés o bajar en sepsis avanzada.
+    Lactate: float | None = None                 # Lactato: elevado indica hipoxia tisular, marcador clave de sepsis.
+    Magnesium: float | None = None               # Magnesio: bajo puede agravar arritmias en sepsis.
+    Phosphate: float | None = None               # Fosfato: alterado en disfunción metabólica.
+    #25
+    Potassium: float | None = None               # Potasio: cambios reflejan alteraciones renales o acidosis.
+    Bilirubin_total: float | None = None         # Bilirrubina total: indica daño hepático o colestasis.
+    TroponinI: float | None = None               # Troponina I: alta indica daño cardíaco por shock séptico.
+    Hct: float | None = None                     # Hematocrito: baja por dilución o hemorragia.
+    Hgb: float | None = None                     # Hemoglobina: mide capacidad de transporte de oxígeno.
+    PTT: float | None = None                     # Tiempo de tromboplastina parcial: alterado en coagulopatía séptica.
+    WBC: float | None = None                     # Glóbulos blancos: elevados o bajos, ambos posibles en sepsis.
+    Fibrinogen: float | None = None              # Fibrinógeno: puede bajar por coagulación intravascular diseminada.
+    Platelets: float | None = None               # Plaquetas: bajas en sepsis severa por consumo o destrucción.
+    #34
+    #  Demographics (35–40)
+    Age: float | None = None                     # Edad: mayores tienen mayor riesgo y peor pronóstico.
+    Gender: float | None = None                  # Género: algunas diferencias inmunológicas pueden influir.
+    Unit1: float | None = None                   # Identificador UCI (MICU): tipo de unidad puede reflejar gravedad.
+    Unit2: float | None = None                   # Identificador UCI (SICU): quirúrgica o médica.
+    HospAdmTime: float | None = None 
+    ICULOS: float | None = None             # Tiempo desde admisión hospitalaria: útil para contexto clínico.
+    # ICULOS: float | promedios                 # Horas en UCI: refleja evolución del paciente.
 
 #40
 # Endpoint de analisis
