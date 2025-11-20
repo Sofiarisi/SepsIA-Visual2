@@ -95,9 +95,7 @@ class SepsisInput(BaseModel):
 #40
 # Endpoint de analisis
 @app.post("/analizar")
-
-
-def analizar(datos: SepsisInput, promedios, modelo):
+def analizar(datos: SepsisInput):
     # Convertimos los datos de entrada a un array en el mismo orden que las columnas del dataset original
     entrada = np.array([[
         datos.HR,
