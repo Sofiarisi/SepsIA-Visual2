@@ -10,7 +10,7 @@ import xgboost as xgb
 
 
 modelo = xgb.XGBClassifier()
-modelo.load_model("model_completo.json")  # or .bin, .txt, etc.
+modelo.load_model("model_completo2.json")  # or .bin, .txt, etc.
 print("Modelo cargado correctamente")
 # modelos = {
 #     7: xgb.XGBClassifier(),
@@ -90,54 +90,57 @@ class SepsisInput(BaseModel):
     Unit2: float | None = None                   # Identificador UCI (SICU): quirúrgica o médica.
     HospAdmTime: float | None = None 
     ICULOS: float | None = None             # Tiempo desde admisión hospitalaria: útil para contexto clínico.
-    # ICULOS: float | promedios                 # Horas en UCI: refleja evolución del paciente.
+    # ICULOS: float | promedios
+    # Unnamed_0: float | None = None
+    # Hour: float | None = None
+    # Patient_ID: float | None = None                 # Horas en UCI: refleja evolución del paciente.
 
 #40
 # Endpoint de analisis
 @app.post("/analizar")
-def analizar(datos: SepsisInput):
+def analizar(data: SepsisInput):
     # Convertimos los datos de entrada a un array en el mismo orden que las columnas del dataset original
     entrada = np.array([[
-        datos.HR,
-        datos.O2Sat,
-        datos.Temp,
-        datos.SBP,
-        datos.MAP,
-        datos.DBP,
-        datos.Resp,
-        datos.EtCO2,
-        datos.BaseExcess,
-        datos.HCO3,
-        datos.FiO2,
-        datos.pH,
-        datos.PaCO2,
-        datos.SaO2,
-        datos.AST,
-        datos.BUN,
-        datos.Alkalinephos,
-        datos.Calcium,
-        datos.Chloride,
-        datos.Creatinine,
-        datos.Bilirubin_direct,
-        datos.Glucose,
-        datos.Lactate,
-        datos.Magnesium,
-        datos.Phosphate,
-        datos.Potassium,
-        datos.Bilirubin_total,
-        datos.TroponinI,
-        datos.Hct,
-        datos.Hgb,
-        datos.PTT,
-        datos.WBC,
-        datos.Fibrinogen,
-        datos.Platelets,
-        datos.Age,
-        datos.Gender,
-        datos.Unit1,
-        datos.Unit2,
-        datos.HospAdmTime,
-        datos.ICULOS
+ data.HR,
+        data.O2Sat,
+        data.Temp,
+        data.SBP,
+        data.MAP,
+        data.DBP,
+        data.Resp,
+        data.EtCO2,
+        data.BaseExcess,
+        data.HCO3,
+        data.FiO2,
+        data.pH,
+        data.PaCO2,
+        data.SaO2,
+        data.AST,
+        data.BUN,
+        data.Alkalinephos,
+        data.Calcium,
+        data.Chloride,
+        data.Creatinine,
+        data.Bilirubin_direct,
+        data.Glucose,
+        data.Lactate,
+        data.Magnesium,
+        data.Phosphate,
+        data.Potassium,
+        data.Bilirubin_total,
+        data.TroponinI,
+        data.Hct,
+        data.Hgb,
+        data.PTT,
+        data.WBC,
+        data.Fibrinogen,
+        data.Platelets,
+        data.Age,
+        data.Gender,
+        data.Unit1,
+        data.Unit2,
+        data.HospAdmTime,
+        data.ICULOS,
     ]], dtype=float)
 
 
